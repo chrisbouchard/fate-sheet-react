@@ -1,11 +1,7 @@
 # dependencies
-node_modules
-.yarn/*
-!.yarn/cache
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+/node_modules
+/.yarn
+/.pnp.js
 
 # testing
 /coverage
