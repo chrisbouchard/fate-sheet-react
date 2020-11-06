@@ -9,6 +9,7 @@
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
         "eslint-config-react-app": "^6.0.0",
+        "json-api-normalizer": "^1.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-redux": "^7.2.2",

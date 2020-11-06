@@ -6978,6 +6978,7 @@ __metadata:
     eslint: ^7.12.1
     eslint-config-prettier: ^6.15.0
     eslint-config-react-app: ^6.0.0
+    json-api-normalizer: ^1.0.0
     prettier: ^2.1.2
     react: ^17.0.1
     react-dom: ^17.0.1
@@ -9498,6 +9499,15 @@ fsevents@^1.2.7:
   bin:
     jsesc: bin/jsesc
   checksum: 1e4574920d3c17c9167fdc14ca66197e8d5d96fb3f37c7473df7857822b7adbf2954d0e126131456f8fd72b6f6908c2367e7a12c18495a5393c37be99acbbb5a
+  languageName: node
+  linkType: hard
+
+"json-api-normalizer@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "json-api-normalizer@npm:1.0.0"
+  dependencies:
+    lodash: ^4.17.15
+  checksum: 6dff3b76c014ae3c05660ea78c23eeddf4648dd4f76dd7de3ee0d567b595c2cd6c1757b1ea64ce0e91c53ecd08699c0292ca4a6c48f0f8bf227dc37e21c5dfc7
   languageName: node
   linkType: hard
 

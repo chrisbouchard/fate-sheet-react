@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:7.12.1"],
             ["eslint-config-prettier", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:6.15.0"],
             ["eslint-config-react-app", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:6.0.0"],
+            ["json-api-normalizer", "npm:1.0.0"],
             ["prettier", "npm:2.1.2"],
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:17.0.1"],
@@ -8481,6 +8482,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:7.12.1"],
             ["eslint-config-prettier", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:6.15.0"],
             ["eslint-config-react-app", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:6.0.0"],
+            ["json-api-normalizer", "npm:1.0.0"],
             ["prettier", "npm:2.1.2"],
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:17.0.1"],
@@ -11269,6 +11271,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/jsesc-npm-2.5.2-c5acb78804-ca91ec33d7.zip/node_modules/jsesc/",
           "packageDependencies": [
             ["jsesc", "npm:2.5.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["json-api-normalizer", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/json-api-normalizer-npm-1.0.0-603c839b4d-6dff3b76c0.zip/node_modules/json-api-normalizer/",
+          "packageDependencies": [
+            ["json-api-normalizer", "npm:1.0.0"],
+            ["lodash", "npm:4.17.20"]
           ],
           "linkType": "HARD",
         }]
