@@ -1,16 +1,20 @@
+import { Router } from "@reach/router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
+
 import "./index.css";
 import App from "./App";
 import store from "./app/store";
-import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
     <StrictMode>
         <Provider store={store}>
-            <App />
+            <Router>
+                <App path="/" />
+            </Router>
         </Provider>
     </StrictMode>,
     document.getElementById("root")
