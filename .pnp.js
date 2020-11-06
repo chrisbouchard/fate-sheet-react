@@ -23,9 +23,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       }
     ],
-    "enableTopLevelFallback": false,
+    "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
+      ["fate-sheet-react2", ["workspace:."]]
     ],
     "fallbackPool": [
     ],
