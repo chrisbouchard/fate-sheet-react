@@ -1,9 +1,8 @@
-import { Router } from "@reach/router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
 import { ProvideApi } from "./api/Api";
-import App from "./App";
+import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import "semantic-ui-css/semantic.min.css";
@@ -12,9 +11,7 @@ import "./index.css";
 ReactDOM.render(
     <StrictMode>
         <ProvideApi baseUri="http://localhost:8080">
-            <Router>
-                <App path="/" />
-            </Router>
+            <App />
         </ProvideApi>
     </StrictMode>,
     document.getElementById("root")

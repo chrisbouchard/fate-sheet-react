@@ -1,13 +1,18 @@
+import { Router } from "@reach/router";
 import { Suspense } from "react";
 import { Container } from "semantic-ui-react";
 
-import Sheet from "./sheet/Sheet";
+import { CharacterList } from "./character/CharacterList";
+import { CharacterSheet } from "./character/CharacterSheet";
 
-export default function App() {
+export function App() {
     return (
         <Container>
             <Suspense fallback="Loading...">
-                <Sheet></Sheet>
+                <Router>
+                    <CharacterList path="/"></CharacterList>
+                    <CharacterSheet path="/:id"></CharacterSheet>
+                </Router>
             </Suspense>
         </Container>
     );
