@@ -2,6 +2,7 @@ import { Router } from "@reach/router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
+import { ProvideApi } from "./api/Api";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -10,9 +11,11 @@ import "./index.css";
 
 ReactDOM.render(
     <StrictMode>
-        <Router>
-            <App path="/" />
-        </Router>
+        <ProvideApi baseUri="http://localhost:8080">
+            <Router>
+                <App path="/" />
+            </Router>
+        </ProvideApi>
     </StrictMode>,
     document.getElementById("root")
 );
