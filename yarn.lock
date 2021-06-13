@@ -4789,6 +4789,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.21.1":
+  version: 0.21.1
+  resolution: "axios@npm:0.21.1"
+  dependencies:
+    follow-redirects: ^1.10.0
+  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^2.1.2, axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -8273,6 +8282,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-deep-equal@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "fast-deep-equal@npm:2.0.1"
+  checksum: ad315b79abe335f25271821447bdbbca5d7a6e5930da498fbb2628d28399e958a679adddbb665f5b2943bfd83d9dd375ac5fb45e9004c9516177008ebb7efc16
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8338,9 +8354,11 @@ __metadata:
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: ^4.2.0
+    kitsu: ^10.0.0-alpha.13
     prettier: ^2.3.1
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-promise-suspense: ^0.3.3
     react-refresh: ^0.10.0
     react-scripts: ^4.0.3
     semantic-ui-css: ^2.4.1
@@ -8536,6 +8554,16 @@ __metadata:
   version: 1.13.0
   resolution: "follow-redirects@npm:1.13.0"
   checksum: f220828d3f153da30ea616fdbe9f6676e74e4e68c51d336a751037c1d556e2de34aa5918f58951fa19bb6517c9c88b4403a0a8bdfc40d3e779d37def2ac0f2c4
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.10.0":
+  version: 1.14.1
+  resolution: "follow-redirects@npm:1.14.1"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 761a18699688b19d66b3e9199ecaf9cd39ede953f3529299c7fca4190b27b855c17c491170977844d5db5e169ffc35ebae999bb0833e9c9c61988d19c20ae7ab
   languageName: node
   linkType: hard
 
@@ -10022,6 +10050,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"is-plain-obj@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "is-plain-obj@npm:2.1.0"
+  checksum: 2314302f9140d1e9607731d523f207d8000281aebbabe0083210342c0758976f75f0f5db405e55910bd4dc9a04baddbeab9d476290642b5a0d31431cc9bda4b3
+  languageName: node
+  linkType: hard
+
 "is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
   version: 2.0.4
   resolution: "is-plain-object@npm:2.0.4"
@@ -11083,6 +11118,25 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"kitsu-core@npm:^10.0.0-alpha.13":
+  version: 10.0.0-alpha.13
+  resolution: "kitsu-core@npm:10.0.0-alpha.13"
+  checksum: 377c37da13c9ce9a1a7f21a12cda2b1e2beda672d53f1a61262d1c86bb7db01027aa4a22b9271bb565c8b0fb93802da7ff7588a59ca6ef4ed4c5d1d146d2071b
+  languageName: node
+  linkType: hard
+
+"kitsu@npm:^10.0.0-alpha.13":
+  version: 10.0.0-alpha.13
+  resolution: "kitsu@npm:10.0.0-alpha.13"
+  dependencies:
+    axios: ^0.21.1
+    kitsu-core: ^10.0.0-alpha.13
+    merge-options: ^3.0.0
+    pluralize: ^8.0.0
+  checksum: 4d4fad9a97ebfd253f0fabd3e69ff0ac37786cd15f693fcddf08904496d352983c668bfade32f8815ed53121172309787581837a3b7ef132dcbee12eb4d32f37
+  languageName: node
+  linkType: hard
+
 "kleur@npm:^3.0.3":
   version: 3.0.3
   resolution: "kleur@npm:3.0.3"
@@ -11505,6 +11559,15 @@ fsevents@^1.2.7:
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 2d2a09eaac840a7ceac7a13b44b7c8abf3ecccd93a609c3525d8290cb5d814336cc7c0b1dd485ae3bc471ed354eeefb153475ce2e1604ccdf79eebe74021c192
+  languageName: node
+  linkType: hard
+
+"merge-options@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "merge-options@npm:3.0.4"
+  dependencies:
+    is-plain-obj: ^2.1.0
+  checksum: 0ab56dbeafdb807a043b1372c5c42a44c68635951e58a5bd5c74d49d22fd07ac6547e77d905dd187757602cbc7c66af972c37b39c7f6f65edceb73089d09ca0a
   languageName: node
   linkType: hard
 
@@ -12947,6 +13010,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"pluralize@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "pluralize@npm:8.0.0"
+  checksum: 5251b470a0c8e5181ac7e1d61028553f90cb2c85c34b8e468cea269ae715499524546c2c3681029ef5697d86c54bfb12e49388f5cc6082051e84f5888588f4ec
+  languageName: node
+  linkType: hard
+
 "pnp-webpack-plugin@npm:1.6.4":
   version: 1.6.4
   resolution: "pnp-webpack-plugin@npm:1.6.4"
@@ -14274,6 +14344,15 @@ fsevents@^1.2.7:
     "@popperjs/core": ^2.0.0
     react: ^16.8.0 || ^17
   checksum: 5cac009001e2a7c640ba931afedbbf33c94a672a3f7c6ef672e55561b72778c6941a09f57156962114b9e47793779728088845fc306c43477ddc645cdb8793ea
+  languageName: node
+  linkType: hard
+
+"react-promise-suspense@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "react-promise-suspense@npm:0.3.3"
+  dependencies:
+    fast-deep-equal: ^2.0.1
+  checksum: 666257c523fc6ecc8beaa04e46b315ca440170b4a7698c4206a89c1dfb12c7fb1ce90995868f14abe7083b1231e360f95818e53726d3b9d5c5685bb350bc3412
   languageName: node
   linkType: hard
 
