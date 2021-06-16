@@ -1,8 +1,9 @@
-import { Link } from "@reach/router";
 import { Suspense } from "react";
 import { Card } from "semantic-ui-react";
 
 import { Fetch } from "../api/Fetch";
+
+import { CharacterCard } from "./CharacterCard";
 
 export function CharacterList(props) {
     const resource = `characters`;
@@ -10,28 +11,32 @@ export function CharacterList(props) {
         include: "aspects",
         page: {
             number: props.pageNumber ?? 1,
-            size: props.pageSize ?? 10,
+            ...(props.pageSize ? { size: props.pageSize } : {}),
         },
     };
 
     return (
-        <Card.Group>
-            <Suspense fallback="Loading...">
-                <Fetch resource={resource} params={params}>
-                    {({ data: characters }) =>
-                        characters.map((character) => (
-                            <Card as={Link} to={character.id}>
-                                <Card.Content>
-                                    <Card.Header>{character.name}</Card.Header>
-                                    <Card.Meta>
-                                        {character.aspects.data[0]?.name}
-                                    </Card.Meta>
-                                </Card.Content>
-                            </Card>
-                        ))
-                    }
-                </Fetch>
-            </Suspense>
-        </Card.Group>
+        <Suspense
+            fallback={
+                <Card.Group>
+                    {Array.from({ length: 3 }).map((_, i) => (
+                        <CharacterCard loading key={i} />
+                    ))}
+                </Card.Group>
+            }
+        >
+            <Fetch resource={resource} params={params}>
+                {({ data: characters }) => (
+                    <Card.Group>
+                        {characters.map((character) => (
+                            <CharacterCard
+                                character={character}
+                                key={character.id}
+                            />
+                        ))}
+                    </Card.Group>
+                )}
+            </Fetch>
+        </Suspense>
     );
 }
