@@ -1,21 +1,18 @@
-import { Router } from "@reach/router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import "semantic-ui-css/semantic.min.css";
 
-import "./index.css";
-import App from "./App";
-import store from "./app/store";
+import { ProvideApi } from "./api/Api";
+import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
+
+import "semantic-ui-css/semantic.min.css";
+import "./index.css";
 
 ReactDOM.render(
     <StrictMode>
-        <Provider store={store}>
-            <Router>
-                <App path="/" />
-            </Router>
-        </Provider>
+        <ProvideApi baseUri="http://localhost:8080">
+            <App />
+        </ProvideApi>
     </StrictMode>,
     document.getElementById("root")
 );
