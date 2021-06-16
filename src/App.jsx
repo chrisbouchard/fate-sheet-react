@@ -1,19 +1,12 @@
-import { Router } from "@reach/router";
-import { Suspense } from "react";
-import { Container } from "semantic-ui-react";
+import { Redirect, Router } from "@reach/router";
 
-import { CharacterList } from "./character/CharacterList";
-import { CharacterSheet } from "./character/CharacterSheet";
+import { CharacterPage } from "./character/CharacterPage";
 
 export function App() {
     return (
-        <Container>
-            <Suspense fallback="Loading...">
-                <Router>
-                    <CharacterList path="/"></CharacterList>
-                    <CharacterSheet path="/:id"></CharacterSheet>
-                </Router>
-            </Suspense>
-        </Container>
+        <Router>
+            <Redirect from="/" to="/characters" noThrow />
+            <CharacterPage path="/characters" />
+        </Router>
     );
 }
