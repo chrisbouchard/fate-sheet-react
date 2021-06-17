@@ -5,7 +5,7 @@ import { Fetch } from "../api/Fetch";
 
 export function CharacterSheet(props) {
     const resource = `characters/${props.id}`;
-    const params = { include: "aspects" };
+    const params = { include: "aspects,skills" };
 
     return (
         <Suspense fallback="Loading...">
