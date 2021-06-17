@@ -9,7 +9,7 @@ export function CharacterPage() {
         <Container>
             <Router>
                 <CharacterList path="/" />
-                <CharacterSheet path="/:id" />
+                <CharacterSheet path=":id" />
             </Router>
         </Container>
     );
