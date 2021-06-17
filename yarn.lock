@@ -14,6 +14,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@artsy/fresnel@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@artsy/fresnel@npm:1.7.0"
+  peerDependencies:
+    react: ">=16.3.0 <18.0.0"
+  checksum: c59785b569b768000fdb4dd47644b009048248d19ae600d461acefec25b96d66bf9c1993826b8a061aa8ada97a507e8b0c2f61e63bda2915a804910954d9f704
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:7.10.4, @babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.5.5":
   version: 7.10.4
   resolution: "@babel/code-frame@npm:7.10.4"
@@ -8337,6 +8346,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fate-sheet-react2@workspace:."
   dependencies:
+    "@artsy/fresnel": ^1.7.0
     "@reach/router": ^1.3.4
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^11.2.7
