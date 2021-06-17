@@ -20,11 +20,9 @@ export function CharacterCard(props) {
             <Card as={Link} to={props.character.id}>
                 <Card.Content>
                     <Card.Header>{props.character.name}</Card.Header>
-                    {props.character.aspects ? (
-                        <Card.Meta>
-                            {props.character.aspects.data[0]?.name}
-                        </Card.Meta>
-                    ) : null}
+                    <Card.Meta>
+                        {props.character.aspects?.data[0]?.name}
+                    </Card.Meta>
                 </Card.Content>
             </Card>
         );
