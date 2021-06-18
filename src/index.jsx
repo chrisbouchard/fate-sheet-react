@@ -8,9 +8,11 @@ import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
 
+const apiBaseUri = process.env.REACT_APP_API_BASE_URI;
+
 ReactDOM.render(
     <StrictMode>
-        <ProvideApi baseUri="http://localhost:8080">
+        <ProvideApi baseUri={apiBaseUri}>
             <App />
         </ProvideApi>
     </StrictMode>,
