@@ -1,13 +1,14 @@
-import { Redirect, Router } from "@reach/router";
+import { Router } from "@reach/router";
 
 import { CharacterPage } from "./character/CharacterPage";
 import { Frame } from "./common/Frame";
+import { Index } from "./common/Index";
 
 export function App() {
     return (
         <Frame>
             <Router>
-                <Redirect from="/" to="characters" noThrow />
+                <Index path="/" />
                 <CharacterPage path="characters/*" />
             </Router>
         </Frame>
