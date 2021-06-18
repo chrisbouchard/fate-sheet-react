@@ -1,5 +1,7 @@
 import { createMedia } from "@artsy/fresnel";
 
+import { FullMenu } from "./FullMenu";
+
 const { MediaContextProvider, Media } = createMedia({
     breakpoints: {
         mobile: 0,
@@ -17,7 +19,7 @@ export function Frame(props) {
                 {props.children}
             </Media>
             <Media greaterThan="mobile">
-                <p>Hello Desktop!</p>
+                <FullMenu />
                 {props.children}
             </Media>
         </MediaContextProvider>
