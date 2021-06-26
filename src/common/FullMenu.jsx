@@ -1,10 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "@reach/router";
 import { Button, Container, Dropdown, Image, Menu } from "semantic-ui-react";
 
-import { useUser } from "../api/User";
-
 export function FullMenu() {
-    const { user, setUser } = useUser();
+    const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     return (
         <Menu borderless attached="bottom">
@@ -14,17 +13,17 @@ export function FullMenu() {
                 </Menu.Item>
 
                 <Menu.Menu position="right">
-                    {user ? (
+                    {isAuthenticated ? (
                         <Dropdown
                             item
                             floating
                             trigger={
                                 <>
                                     <Image
-                                        alt={user.name}
                                         avatar
                                         spaced="right"
-                                        src="https://www.gravatar.com/avatar/d9966544dacbebd3ac5560c222038f32"
+                                        src={user.picture}
+                                        alt={user.name}
                                     />
                                     {user.name}
                                 </>
@@ -38,7 +37,11 @@ export function FullMenu() {
                                 <Dropdown.Item
                                     icon="sign-out"
                                     content="Log Out"
-                                    onClick={() => setUser(null)}
+                                    onClick={() =>
+                                        logout({
+                                            redirectTo: window.location.origin,
+                                        })
+                                    }
                                 />
                             </Dropdown.Menu>
                         </Dropdown>
@@ -49,12 +52,7 @@ export function FullMenu() {
                                     primary
                                     icon="sign-in"
                                     content="Log In"
-                                    onClick={() =>
-                                        setUser({
-                                            id: 1,
-                                            name: "Chris",
-                                        })
-                                    }
+                                    onClick={() => loginWithRedirect()}
                                 />
                             </Menu.Item>
                         </>
