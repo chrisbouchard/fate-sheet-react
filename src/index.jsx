@@ -14,7 +14,9 @@ const apiBaseUri = process.env.REACT_APP_API_BASE_URI;
 
 const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const auth0ClientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const auth0RedirectUri = process.env.REACT_APP_AUTH0_REDIRECT_URI;
+const auth0Audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+
+const auth0RedirectUri = window.location.origin;
 
 ReactDOM.render(
     <StrictMode>
@@ -22,6 +24,9 @@ ReactDOM.render(
             domain={auth0Domain}
             clientId={auth0ClientId}
             redirectUri={auth0RedirectUri}
+            audience={auth0Audience}
+            useRefreshTokens={true}
+            cacheLocation="localstorage"
         >
             <ProvideApi baseUri={apiBaseUri}>
                 <MediaContextProvider>
