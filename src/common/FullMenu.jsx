@@ -15,6 +15,7 @@ export function FullMenu() {
                 <Menu.Menu position="right">
                     {isAuthenticated ? (
                         <Dropdown
+                            className="vertically fitted"
                             item
                             floating
                             trigger={
@@ -22,6 +23,7 @@ export function FullMenu() {
                                     <Image
                                         avatar
                                         spaced="right"
+                                        verticalAlign="middle"
                                         src={user.picture}
                                         alt={user.name}
                                     />
