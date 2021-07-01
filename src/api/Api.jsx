@@ -1,19 +1,7 @@
 import Kitsu from "kitsu";
-import { createContext, useMemo } from "react";
+import { createContext } from "react";
+
+const baseURL = process.env.REACT_APP_API_BASE_URL;
 
 // TODO: Any better default?
-export const ApiContext = createContext(null);
-
-export function ProvideApi(props) {
-    const api = useMemo(
-        () =>
-            new Kitsu({
-                baseURL: props.baseUri,
-            }),
-        [props.baseUri]
-    );
-
-    return (
-        <ApiContext.Provider value={api}>{props.children}</ApiContext.Provider>
-    );
-}
+export const ApiContext = createContext(new Kitsu({ baseURL }));
