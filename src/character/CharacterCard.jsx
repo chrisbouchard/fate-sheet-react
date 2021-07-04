@@ -4,7 +4,7 @@ import { Card, Placeholder } from "semantic-ui-react";
 export function CharacterCard(props) {
     if (props.loading) {
         return (
-            <Card>
+            <Card link>
                 <Card.Content>
                     <Placeholder>
                         <Placeholder.Header>
@@ -17,7 +17,7 @@ export function CharacterCard(props) {
         );
     } else {
         return (
-            <Card as={Link} to={props.character.id}>
+            <Card link as={Link} to={props.character.id}>
                 <Card.Content>
                     <Card.Header>{props.character.name}</Card.Header>
                     <Card.Meta>
