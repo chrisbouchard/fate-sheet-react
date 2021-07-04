@@ -1,25 +1,14 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useContext } from "react";
 import usePromise from "react-promise-suspense";
 
-import { ApiContext } from "../api/Api";
+import { useApi } from "../api/Api";
 
-export function Fetch(props) {
-    const api = useContext(ApiContext);
-    const { getAccessTokenSilently } = useAuth0();
+export function Fetch({ resource, params = {}, children }) {
+    const api = useApi();
 
-    const resource = props.resource;
-    const params = props.params ?? {};
+    const response = usePromise(
+        () => api.fetch(resource, { params }),
+        [api, resource, params]
+    );
 
-    const response = usePromise(async () => {
-        const token = await getAccessTokenSilently();
-        return await api.fetch(resource, {
-            params,
-            headers: {
-                Authorization: `bearer ${token}`,
-            },
-        });
-    }, [api, getAccessTokenSilently, resource, params]);
-
-    return props.children(response);
+    return children(response);
 }

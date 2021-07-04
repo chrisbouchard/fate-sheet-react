@@ -1,5 +1,6 @@
 import { Router } from "@reach/router";
 
+import { ApiProvider } from "./api/Api";
 import { AuthProvider } from "./api/Auth";
 import { BreadcrumbsProvider } from "./breadcrumbs/Breadcrumbs";
 import { CharacterPage } from "./character/CharacterPage";
@@ -12,20 +13,22 @@ import { MediaContextProvider } from "./common/Responsive";
 export function App() {
     return (
         <AuthProvider>
-            <MediaContextProvider>
-                <Frame>
-                    {() => (
-                        <BreadcrumbsProvider>
-                            <BreadcrumbItem label="Home" uri="/" />
-                            <BreadcrumbList />
-                            <Router>
-                                <Index path="/" />
-                                <CharacterPage path="characters/*" />
-                            </Router>
-                        </BreadcrumbsProvider>
-                    )}
-                </Frame>
-            </MediaContextProvider>
+            <ApiProvider>
+                <MediaContextProvider>
+                    <Frame>
+                        {() => (
+                            <BreadcrumbsProvider>
+                                <BreadcrumbItem label="Home" uri="/" />
+                                <BreadcrumbList />
+                                <Router>
+                                    <Index path="/" />
+                                    <CharacterPage path="characters/*" />
+                                </Router>
+                            </BreadcrumbsProvider>
+                        )}
+                    </Frame>
+                </MediaContextProvider>
+            </ApiProvider>
         </AuthProvider>
     );
 }
