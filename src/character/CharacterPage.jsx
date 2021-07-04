@@ -3,8 +3,8 @@ import { Container } from "semantic-ui-react";
 
 import { BreadcrumbItem } from "../breadcrumbs/BreadcrumbItem";
 
-import { CharacterList } from "./CharacterList";
-import { CharacterSheet } from "./CharacterSheet";
+import { CharacterSelectPage } from "./CharacterSelectPage";
+import { CharacterDetailPage } from "./CharacterDetailPage";
 
 export function CharacterPage({ uri }) {
     return (
@@ -12,8 +12,8 @@ export function CharacterPage({ uri }) {
             <BreadcrumbItem label="Characters" uri={uri} />
             <Container>
                 <Router>
-                    <CharacterList path="/" />
-                    <CharacterSheet path=":id" />
+                    <CharacterSelectPage path="/" />
+                    <CharacterDetailPage path=":id" />
                 </Router>
             </Container>
         </>

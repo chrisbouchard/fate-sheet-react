@@ -1,30 +1,34 @@
 import { Link } from "@reach/router";
 import { Card, Placeholder } from "semantic-ui-react";
 
-export function CharacterCard(props) {
-    if (props.loading) {
-        return (
-            <Card link>
-                <Card.Content>
+export function CharacterCard({ character, loading }) {
+    return (
+        <Card
+            link
+            as={loading ? undefined : Link}
+            to={character?.id}
+            state={{ character }}
+        >
+            <Placeholder>
+                <Placeholder.Image square />
+            </Placeholder>
+            <Card.Content>
+                {loading ? (
                     <Placeholder>
                         <Placeholder.Header>
                             <Placeholder.Line />
                             <Placeholder.Line />
                         </Placeholder.Header>
                     </Placeholder>
-                </Card.Content>
-            </Card>
-        );
-    } else {
-        return (
-            <Card link as={Link} to={props.character.id}>
-                <Card.Content>
-                    <Card.Header>{props.character.name}</Card.Header>
-                    <Card.Meta>
-                        {props.character.aspects?.data[0]?.name}
-                    </Card.Meta>
-                </Card.Content>
-            </Card>
-        );
-    }
+                ) : (
+                    <>
+                        <Card.Header>{character.name}</Card.Header>
+                        <Card.Meta>
+                            {character.aspects?.data[0]?.name}
+                        </Card.Meta>
+                    </>
+                )}
+            </Card.Content>
+        </Card>
+    );
 }
