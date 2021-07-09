@@ -10,7 +10,11 @@ export function CharacterList({ characters, loading }) {
                       <CharacterCard loading key={i} />
                   ))
                 : characters.map((character) => (
-                      <CharacterCard character={character} key={character.id} />
+                      <CharacterCard
+                          character={character}
+                          path={character.id}
+                          key={character.id}
+                      />
                   ))}
         </Card.Group>
     );

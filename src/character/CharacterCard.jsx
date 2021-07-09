@@ -3,12 +3,12 @@ import { Card, Dimmer, Image, Loader, Placeholder } from "semantic-ui-react";
 
 import placeholderImageUri from "./placeholder.svg";
 
-export function CharacterCard({ character, loading }) {
+export function CharacterCard({ character, loading, path }) {
     return (
         <Card
             link
             as={loading ? undefined : Link}
-            to={character?.id}
+            to={loading ? null : path}
             state={{ character }}
         >
             <Image>
