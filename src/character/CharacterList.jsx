@@ -2,7 +2,7 @@ import { Card } from "semantic-ui-react";
 
 import { CharacterCard } from "./CharacterCard";
 
-export function CharacterList({ characters, loading }) {
+export function CharacterList({ characters, loading, path }) {
     return (
         <Card.Group>
             {loading
@@ -12,7 +12,7 @@ export function CharacterList({ characters, loading }) {
                 : characters.map((character) => (
                       <CharacterCard
                           character={character}
-                          path={character.id}
+                          path={path(character)}
                           key={character.id}
                       />
                   ))}
