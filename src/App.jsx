@@ -9,6 +9,7 @@ import { BreadcrumbList } from "./breadcrumbs/BreadcrumbList";
 import { Frame } from "./common/Frame";
 import { Index } from "./common/Index";
 import { MediaContextProvider } from "./common/Responsive";
+import { WorldPage } from "./world/WorldPage";
 
 export function App() {
     return (
@@ -23,6 +24,7 @@ export function App() {
                                 <Router>
                                     <Index path="/" />
                                     <CharacterPage path="characters/*" />
+                                    <WorldPage path="worlds/*" />
                                 </Router>
                             </BreadcrumbsProvider>
                         )}
