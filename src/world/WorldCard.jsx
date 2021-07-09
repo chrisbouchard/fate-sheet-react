@@ -1,7 +1,7 @@
 import { Link } from "@reach/router";
 import { Card, Dimmer, Image, Loader, Placeholder } from "semantic-ui-react";
 
-import worldImageUri from "./world.svg";
+import placeholderImageUri from "./placeholder.svg";
 
 export function WorldCard({ world, loading }) {
     return (
@@ -15,7 +15,7 @@ export function WorldCard({ world, loading }) {
                 <Dimmer inverted active={loading}>
                     <Loader />
                 </Dimmer>
-                <Image src={worldImageUri} />
+                <Image src={placeholderImageUri} />
             </Image>
             <Card.Content>
                 {loading ? (

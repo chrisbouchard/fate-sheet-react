@@ -1,5 +1,7 @@
 import { Link } from "@reach/router";
-import { Card, Placeholder } from "semantic-ui-react";
+import { Card, Dimmer, Image, Loader, Placeholder } from "semantic-ui-react";
+
+import placeholderImageUri from "./placeholder.svg";
 
 export function CharacterCard({ character, loading }) {
     return (
@@ -9,9 +11,12 @@ export function CharacterCard({ character, loading }) {
             to={character?.id}
             state={{ character }}
         >
-            <Placeholder>
-                <Placeholder.Image square />
-            </Placeholder>
+            <Image>
+                <Dimmer inverted active={loading}>
+                    <Loader />
+                </Dimmer>
+                <Image src={placeholderImageUri} />
+            </Image>
             <Card.Content>
                 {loading ? (
                     <Placeholder>
