@@ -13,7 +13,7 @@ export function WorldPage({ uri }) {
             <Container>
                 <Router>
                     <WorldSelectPage path="/" />
-                    <WorldDetailPage path=":id" />
+                    <WorldDetailPage path=":id/*" />
                 </Router>
             </Container>
         </>

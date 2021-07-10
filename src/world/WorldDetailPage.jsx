@@ -3,10 +3,12 @@ import { Suspense } from "react";
 import { Fetch } from "../api/Fetch";
 import { BreadcrumbItem } from "../breadcrumbs/BreadcrumbItem";
 
+import { WorldDetails } from "./WorldDetails";
+
 export function WorldDetailPage({ id, location, uri }) {
     const resource = `worlds/${id}`;
 
-    const initialWorld = location.state.world;
+    const initialWorld = location.state?.world;
 
     return (
         <Suspense
@@ -16,7 +18,7 @@ export function WorldDetailPage({ id, location, uri }) {
                         label={initialWorld?.name ?? <>&hellip;</>}
                         uri={uri}
                     />
-                    Hello World!
+                    <WorldDetails loading />
                 </>
             }
         >
@@ -24,7 +26,7 @@ export function WorldDetailPage({ id, location, uri }) {
                 {({ data: world }) => (
                     <>
                         <BreadcrumbItem label={world.name} uri={uri} />
-                        Hello World!
+                        <WorldDetails world={world} />
                     </>
                 )}
             </Fetch>

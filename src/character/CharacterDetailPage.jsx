@@ -9,7 +9,7 @@ export function CharacterDetailPage({ id, location, uri }) {
     const resource = `characters/${id}`;
     const params = { include: "aspects,skills" };
 
-    const initialCharacter = location.state.character;
+    const initialCharacter = location.state?.character;
 
     return (
         <Suspense
