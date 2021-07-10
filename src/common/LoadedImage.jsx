@@ -47,7 +47,9 @@ export function LoadedImage({
 }) {
     const [imageState, dispatch] = useReducer(reducer, initialState);
 
-    // Reset state when the image source changes.
+    // Reset state when the image source changes. We use a layout effect so
+    // that the reset happens *before* the <img> element is "painted" and
+    // begins loading, to avoid a race condition.
     useLayoutEffect(() => {
         dispatch({ type: "reset", src });
     }, [src]);
