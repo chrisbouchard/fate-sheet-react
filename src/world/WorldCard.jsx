@@ -1,5 +1,7 @@
 import { Link } from "@reach/router";
-import { Card, Dimmer, Image, Loader, Placeholder } from "semantic-ui-react";
+import { Card, Placeholder } from "semantic-ui-react";
+
+import { LoadedImage } from "../common/LoadedImage";
 
 import placeholderImageUri from "./placeholder.svg";
 
@@ -11,12 +13,12 @@ export function WorldCard({ world, loading }) {
             to={world?.id}
             state={{ world }}
         >
-            <Image>
-                <Dimmer inverted active={loading}>
-                    <Loader />
-                </Dimmer>
-                <Image src={placeholderImageUri} />
-            </Image>
+            <LoadedImage
+                src={loading ? undefined : "/world-test.svg"}
+                placeholderSrc={placeholderImageUri}
+                loading={loading}
+                bordered
+            />
             <Card.Content>
                 {loading ? (
                     <Placeholder>

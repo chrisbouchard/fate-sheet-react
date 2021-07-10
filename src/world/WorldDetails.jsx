@@ -1,13 +1,6 @@
-import {
-    Dimmer,
-    Divider,
-    Grid,
-    Header,
-    Image,
-    Loader,
-    Placeholder,
-    Segment,
-} from "semantic-ui-react";
+import { Divider, Grid, Header, Placeholder, Segment } from "semantic-ui-react";
+
+import { LoadedImage } from "../common/LoadedImage";
 
 import placeholderImageUri from "./placeholder.svg";
 
@@ -15,12 +8,12 @@ export function WorldDetails({ loading, world }) {
     return (
         <Grid as={Segment}>
             <Grid.Column width={5}>
-                <Image>
-                    <Dimmer inverted active={loading}>
-                        <Loader />
-                    </Dimmer>
-                    <Image src={placeholderImageUri} bordered />
-                </Image>
+                <LoadedImage
+                    src={loading ? undefined : "/world-test.svg"}
+                    placeholderSrc={placeholderImageUri}
+                    loading={loading}
+                    bordered
+                />
             </Grid.Column>
             <Grid.Column width={11}>
                 {world?.name ? (
