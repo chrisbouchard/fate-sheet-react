@@ -1,5 +1,6 @@
 import { Router } from "@reach/router";
 import { Suspense } from "react";
+import { Segment } from "semantic-ui-react";
 
 import { Fetch } from "../api/Fetch";
 import { BreadcrumbItem } from "../breadcrumbs/BreadcrumbItem";
@@ -34,9 +35,11 @@ export function WorldDetailPage({ id, location, uri }) {
                     )}
                 </Fetch>
             </Suspense>
-            <Router>
-                <WorldCharacterSelectPage path="/" worldId={id} />
-            </Router>
+            <Segment basic>
+                <Router>
+                    <WorldCharacterSelectPage path="/" worldId={id} />
+                </Router>
+            </Segment>
         </>
     );
 }
