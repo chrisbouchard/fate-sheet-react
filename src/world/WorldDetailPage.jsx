@@ -1,9 +1,11 @@
+import { Router } from "@reach/router";
 import { Suspense } from "react";
 
 import { Fetch } from "../api/Fetch";
 import { BreadcrumbItem } from "../breadcrumbs/BreadcrumbItem";
 
-import { WorldDetails } from "./WorldDetails";
+import { WorldCharacterSelectPage } from "./WorldCharacterSelectPage";
+import { WorldOverview } from "./WorldOverview";
 
 export function WorldDetailPage({ id, location, uri }) {
     const resource = `worlds/${id}`;
@@ -11,25 +13,30 @@ export function WorldDetailPage({ id, location, uri }) {
     const initialWorld = location.state?.world;
 
     return (
-        <Suspense
-            fallback={
-                <>
-                    <BreadcrumbItem
-                        label={initialWorld?.name ?? <>&hellip;</>}
-                        uri={uri}
-                    />
-                    <WorldDetails loading />
-                </>
-            }
-        >
-            <Fetch resource={resource}>
-                {({ data: world }) => (
+        <>
+            <Suspense
+                fallback={
                     <>
-                        <BreadcrumbItem label={world.name} uri={uri} />
-                        <WorldDetails world={world} />
+                        <BreadcrumbItem
+                            label={initialWorld?.name ?? <>&hellip;</>}
+                            uri={uri}
+                        />
+                        <WorldOverview loading />
                     </>
-                )}
-            </Fetch>
-        </Suspense>
+                }
+            >
+                <Fetch resource={resource}>
+                    {({ data: world }) => (
+                        <>
+                            <BreadcrumbItem label={world.name} uri={uri} />
+                            <WorldOverview world={world} />
+                        </>
+                    )}
+                </Fetch>
+            </Suspense>
+            <Router>
+                <WorldCharacterSelectPage path="/" worldId={id} />
+            </Router>
+        </>
     );
 }

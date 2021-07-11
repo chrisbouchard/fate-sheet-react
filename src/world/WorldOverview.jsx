@@ -1,13 +1,13 @@
-import { Divider, Grid, Header, Placeholder, Segment } from "semantic-ui-react";
+import { Grid, Header, Placeholder, Segment } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
 
 import placeholderImageUri from "./placeholder.svg";
 
-export function WorldDetails({ loading, world }) {
+export function WorldOverview({ loading, world }) {
     return (
         <Grid as={Segment}>
-            <Grid.Column width={5}>
+            <Grid.Column width={4}>
                 <LoadedImage
                     src={loading ? undefined : "/world-test.svg"}
                     placeholderSrc={placeholderImageUri}
@@ -15,7 +15,7 @@ export function WorldDetails({ loading, world }) {
                     bordered
                 />
             </Grid.Column>
-            <Grid.Column width={11}>
+            <Grid.Column width={12}>
                 {world?.name ? (
                     <Header size="huge">{world.name}</Header>
                 ) : loading ? (
