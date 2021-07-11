@@ -13,22 +13,11 @@ export function CharacterDetailPage({ id, location, uri }) {
 
     return (
         <Suspense
-            fallback={
-                <>
-                    <BreadcrumbItem
-                        label={initialCharacter?.name ?? <>&hellip;</>}
-                        uri={uri}
-                    />
-                    <CharacterSheet loading character={initialCharacter} />
-                </>
-            }
+            fallback={<CharacterSheet loading character={initialCharacter} />}
         >
             <Fetch resource={resource} params={params}>
                 {({ data: character }) => (
-                    <>
-                        <BreadcrumbItem label={character.name} uri={uri} />
-                        <CharacterSheet character={character} />
-                    </>
+                    <CharacterSheet character={character} />
                 )}
             </Fetch>
         </Suspense>
