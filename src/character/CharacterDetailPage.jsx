@@ -7,7 +7,7 @@ import { CharacterSheet } from "./CharacterSheet";
 
 export function CharacterDetailPage({ id, location, uri }) {
     const resource = `characters/${id}`;
-    const params = { include: "aspects,skills" };
+    const params = { include: "aspects,skills,world" };
 
     const initialCharacter = location.state?.character;
 
