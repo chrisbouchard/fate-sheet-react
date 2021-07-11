@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { Fetch } from "../api/Fetch";
 import { CharacterList } from "../character/CharacterList";
 
-const characterPath = (character) => `characters/${character.id}`;
+const characterPath = (character) => `/characters/${character.id}`;
 
 export function WorldCharacterSelectPage({ worldId }) {
     const resource = `worlds/${worldId}/characters`;
