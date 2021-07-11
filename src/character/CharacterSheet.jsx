@@ -1,22 +1,16 @@
-import { Grid, Header, Segment } from "semantic-ui-react";
+import { Grid, Header, List, Segment } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
+import { WorldTag } from "../world/WorldTag";
 
 import placeholderImageUri from "./placeholder.svg";
 
 export function CharacterSheet({ character, loading }) {
     return (
         <>
-            <Grid as={Segment} stacked divided="vertically">
+            <Grid as={Segment} stacked>
                 <Grid.Row>
-                    <Grid.Column width={4}>
-                        <LoadedImage
-                            placeholderSrc={placeholderImageUri}
-                            loading={loading}
-                            bordered
-                        />
-                    </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={10}>
                         <Header size="huge">
                             {character?.name ??
                                 (loading ? (
@@ -24,21 +18,46 @@ export function CharacterSheet({ character, loading }) {
                                 ) : (
                                     "Unknown Character"
                                 ))}
-                            <Header.Subheader>
-                                {character?.aspects
-                                    ? character.aspects.data[0]?.name
-                                    : null}
-                            </Header.Subheader>
                         </Header>
                     </Grid.Column>
-                    <Grid.Column width={4}>World</Grid.Column>
+                    <Grid.Column width={6} textAlign="right">
+                        {character?.world?.data ? (
+                            <WorldTag world={character.world.data} />
+                        ) : null}
+                    </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    <Grid.Column width={16}>
-                        <p>Hello World!</p>
+                    <Grid.Column width={8}>
+                        <AspectsSection
+                            aspects={character?.aspects?.data}
+                            loading={loading}
+                        />
+                    </Grid.Column>
+                    <Grid.Column width={8}>Skills</Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column width={6}>
+                        <LoadedImage
+                            placeholderSrc={placeholderImageUri}
+                            loading={loading}
+                            bordered
+                        />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
         </>
+    );
+}
+
+function AspectsSection({ aspects, loading }) {
+    return (
+        <List>
+            {aspects?.map((aspect, index) => (
+                <List.Item key={index}>
+                    <List.Header>{aspect.name}</List.Header>
+                    <List.Description>{aspect.label}</List.Description>
+                </List.Item>
+            ))}
+        </List>
     );
 }
