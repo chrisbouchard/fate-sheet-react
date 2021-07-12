@@ -1,3 +1,4 @@
+import { flow, groupBy, sortBy, toPairs } from "lodash-es";
 import { Grid, Header, Image, Label, List, Segment } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
@@ -96,34 +97,41 @@ function AspectsSection({ aspects, loading }) {
 }
 
 function SkillsSection({ skills, loading }) {
+    const levelGroups = flow(
+        (_) => sortBy(_, "name"),
+        (_) => groupBy(_, "level"),
+        toPairs,
+        (_) => sortBy(_, (pair) => -pair[0])
+    )(skills);
+
     return (
         <List relaxed verticalAlign="middle">
-            <List.Item>
-                <Image>
-                    <Header size="large" textAlign="center">
-                        +2
-                    </Header>
-                </Image>
-                <List.Content>
-                    <List horizontal>
-                        <List.Item>Foo</List.Item>
-                        <List.Item>Bar</List.Item>
-                    </List>
-                </List.Content>
-            </List.Item>
-            <List.Item>
-                <Image>
-                    <Header size="large" textAlign="center">
-                        &minus;1
-                    </Header>
-                </Image>
-                <List.Content>
-                    <List horizontal>
-                        <List.Item>Alpha</List.Item>
-                        <List.Item>Beta</List.Item>
-                    </List>
-                </List.Content>
-            </List.Item>
+            {levelGroups.map(([level, skillsAtLevel]) => (
+                <List.Item key={level}>
+                    <Image>
+                        <SkillLevelLabel level={level} />
+                    </Image>
+                    <List.Content>
+                        <List horizontal>
+                            {skillsAtLevel.map((skill) => (
+                                <List.Item key={skill.name}>
+                                    {skill.name}
+                                </List.Item>
+                            ))}
+                        </List>
+                    </List.Content>
+                </List.Item>
+            ))}
         </List>
+    );
+}
+
+function SkillLevelLabel({ level }) {
+    const formattedLevel = (level >= 0 ? "+" : "") + (level ?? "?");
+
+    return (
+        <Header size="large" textAlign="center">
+            {formattedLevel}
+        </Header>
     );
 }
