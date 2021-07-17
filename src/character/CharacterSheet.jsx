@@ -1,19 +1,64 @@
 import { flow, groupBy, sortBy, toPairs } from "lodash-es";
-import { Grid, Header, Image, Label, List, Segment } from "semantic-ui-react";
+import {
+    Button,
+    Grid,
+    Header,
+    Image,
+    Label,
+    List,
+    Segment,
+} from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
 
 import placeholderImageUri from "./placeholder.svg";
 
 export function CharacterSheet({ character, loading }) {
+    const stressTracks = [
+        {
+            name: "Physical",
+            boxes: [
+                { level: 1, checked: false },
+                { level: 2, checked: false },
+            ],
+        },
+        {
+            name: "Mental",
+            boxes: [
+                { level: 1, checked: true },
+                { level: 2, checked: false },
+                { level: 3, checked: false },
+                { level: 4, checked: false },
+            ],
+        },
+    ];
+
+    const consequences = [
+        {
+            name: null,
+            label: "Mild",
+            level: 2,
+        },
+        {
+            name: null,
+            label: "Moderate",
+            level: 4,
+        },
+        {
+            name: null,
+            label: "Severe",
+            level: 6,
+        },
+    ];
+
     return (
         <>
             <Grid as={Segment} piled padded>
                 <Grid.Column width={11}>
-                    <Grid>
-                        <Grid.Row columns="equal">
+                    <Grid columns="equal">
+                        <Grid.Row>
                             <Grid.Column>
-                                <Header size="huge">
+                                <Header as="h1">
                                     {character?.name ??
                                         (loading ? (
                                             <>Loading&hellip;</>
@@ -28,7 +73,7 @@ export function CharacterSheet({ character, loading }) {
                                 </Header>
                             </Grid.Column>
                         </Grid.Row>
-                        <Grid.Row columns="equal">
+                        <Grid.Row>
                             <Grid.Column>
                                 <Header size="medium">Aspects</Header>
                                 <AspectsSection
@@ -40,6 +85,22 @@ export function CharacterSheet({ character, loading }) {
                                 <Header size="medium">Skills</Header>
                                 <SkillsSection
                                     skills={character?.skills?.data}
+                                    loading={loading}
+                                />
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Header size="medium">Consequences</Header>
+                                <AspectsSection
+                                    aspects={consequences}
+                                    loading={loading}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Header size="medium">Stress</Header>
+                                <StressSection
+                                    stressTracks={stressTracks}
                                     loading={loading}
                                 />
                             </Grid.Column>
@@ -85,11 +146,26 @@ export function CharacterSheet({ character, loading }) {
 
 function AspectsSection({ aspects, loading }) {
     return (
-        <List relaxed>
+        <List relaxed verticalAlign="middle">
             {aspects?.map((aspect, index) => (
                 <List.Item key={index}>
-                    <List.Header>{aspect.name}</List.Header>
-                    <List.Description>{aspect.label}</List.Description>
+                    {aspect.level ? (
+                        <Image>
+                            <Header size="large" textAlign="center">
+                                <Shifts value={-aspect.level} />
+                            </Header>
+                        </Image>
+                    ) : null}
+                    <List.Content>
+                        {aspect.name ? (
+                            <List.Header>{aspect.name}</List.Header>
+                        ) : (
+                            <List.Description>
+                                <i>Empty</i>
+                            </List.Description>
+                        )}
+                        <List.Description>{aspect.label}</List.Description>
+                    </List.Content>
                 </List.Item>
             ))}
         </List>
@@ -109,7 +185,9 @@ function SkillsSection({ skills, loading }) {
             {levelGroups.map(([level, skillsAtLevel]) => (
                 <List.Item key={level}>
                     <Image>
-                        <SkillLevelLabel level={level} />
+                        <Header size="large" textAlign="center">
+                            <Shifts value={level} />
+                        </Header>
                     </Image>
                     <List.Content>
                         <List horizontal>
@@ -126,12 +204,45 @@ function SkillsSection({ skills, loading }) {
     );
 }
 
-function SkillLevelLabel({ level }) {
-    const formattedLevel = (level >= 0 ? "+" : "") + (level ?? "?");
-
+function StressSection({ stressTracks, loading }) {
     return (
-        <Header size="large" textAlign="center">
-            {formattedLevel}
-        </Header>
+        <List relaxed>
+            {stressTracks.map((stressTrack) => (
+                <StressTrack stressTrack={stressTrack} loading={loading} />
+            ))}
+        </List>
     );
+}
+
+function StressTrack({ stressTrack, loading }) {
+    return (
+        <List.Item>
+            <List.Header>{stressTrack.name}</List.Header>
+            <List.Content style={{ "margin-top": "2pt" }}>
+                {stressTrack.boxes.map((box) => (
+                    <Button
+                        basic={!box.checked}
+                        circular
+                        compact
+                        content={box.level}
+                        icon={box.checked ? "times circle" : "circle outline"}
+                        negative={box.checked}
+                        size="small"
+                    />
+                ))}
+            </List.Content>
+        </List.Item>
+    );
+}
+
+function Shifts({ absolute = false, value }) {
+    const positiveModifier = absolute ? null : "+";
+    const negativeModifier = <>&minus;</>;
+
+    return value != null ? (
+        <>
+            {value >= 0 ? positiveModifier : negativeModifier}
+            {Math.abs(value)}
+        </>
+    ) : null;
 }
