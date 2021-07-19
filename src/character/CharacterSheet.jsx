@@ -1,12 +1,15 @@
+import { Link } from "@reach/router";
 import { flow, groupBy, sortBy, toPairs } from "lodash-es";
 import {
     Button,
+    Divider,
     Grid,
     Header,
     Image,
-    Label,
     List,
+    Menu,
     Segment,
+    Statistic,
 } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
@@ -51,75 +54,121 @@ export function CharacterSheet({ character, loading }) {
         },
     ];
 
+    const powerLevel = 4;
+    const skillPoints = 35;
+
     return (
-        <>
-            <Grid as={Segment} piled padded>
-                <Grid.Column width={11}>
-                    <Grid columns="equal">
+        <Segment piled padded>
+            <Grid stackable>
+                <Grid.Column mobile={16} tablet={16} computer={11}>
+                    <Menu secondary stackable>
+                        <Menu.Item>
+                            <Header as="h1">
+                                {character?.name ??
+                                    (loading ? (
+                                        <>Loading&hellip;</>
+                                    ) : (
+                                        "Unknown Character"
+                                    ))}{" "}
+                            </Header>
+                        </Menu.Item>
+                        <Menu.Menu position="right">
+                            {character?.world?.data && (
+                                <Menu.Item>
+                                    <Button
+                                        as={Link}
+                                        basic
+                                        content={
+                                            character.world.data.name ?? (
+                                                <i>Loading&hellip;</i>
+                                            )
+                                        }
+                                        icon="globe"
+                                        labelPosition="left"
+                                        to={`/worlds/${character.world.data.id}`}
+                                        primary
+                                    />
+                                </Menu.Item>
+                            )}
+                        </Menu.Menu>
+                    </Menu>
+                    <Grid stackable>
                         <Grid.Row>
-                            <Grid.Column>
-                                <Header as="h1">
-                                    {character?.name ??
-                                        (loading ? (
-                                            <>Loading&hellip;</>
-                                        ) : (
-                                            "Unknown Character"
-                                        ))}{" "}
-                                    {character?.world?.data ? (
-                                        <Label color="blue" horizontal>
-                                            {character.world.data.name}
-                                        </Label>
-                                    ) : null}
-                                </Header>
+                            <Grid.Column width={7}>
+                                <Segment basic>
+                                    <Header size="medium">Aspects</Header>
+                                    <AspectsSection
+                                        aspects={character?.aspects?.data}
+                                        loading={loading}
+                                    />
+                                </Segment>
+                            </Grid.Column>
+                            <Grid.Column width={9}>
+                                <Segment basic>
+                                    <Header size="medium">Skills</Header>
+                                    <SkillsSection
+                                        skills={character?.skills?.data}
+                                        loading={loading}
+                                    />
+                                </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row reversed="mobile">
+                            <Grid.Column width={7}>
+                                <Segment basic>
+                                    <Header size="medium">Consequences</Header>
+                                    <AspectsSection
+                                        aspects={consequences}
+                                        loading={loading}
+                                    />
+                                </Segment>
+                            </Grid.Column>
+                            <Grid.Column width={9}>
+                                <Segment basic>
+                                    <Header size="medium">Stress</Header>
+                                    <StressSection
+                                        stressTracks={stressTracks}
+                                        loading={loading}
+                                    />
+                                </Segment>
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
-                            <Grid.Column>
-                                <Header size="medium">Aspects</Header>
-                                <AspectsSection
-                                    aspects={character?.aspects?.data}
-                                    loading={loading}
-                                />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Header size="medium">Skills</Header>
-                                <SkillsSection
-                                    skills={character?.skills?.data}
-                                    loading={loading}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Header size="medium">Consequences</Header>
-                                <AspectsSection
-                                    aspects={consequences}
-                                    loading={loading}
-                                />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Header size="medium">Stress</Header>
-                                <StressSection
-                                    stressTracks={stressTracks}
-                                    loading={loading}
-                                />
+                            <Grid.Column width={16}>
+                                <Segment basic>
+                                    <Header size="medium">Stunts</Header>
+                                    <List>
+                                        <List.Item>
+                                            <List.Header>Test</List.Header>
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit. Mauris
+                                            sed feugiat ligula, vitae iaculis
+                                            tellus. Proin quis enim sit amet ex
+                                            convallis convallis. Aenean
+                                            convallis viverra ultricies.
+                                            Vestibulum ut lacinia justo. Donec
+                                            viverra facilisis purus ut sagittis.
+                                            Interdum et malesuada fames ac ante
+                                            ipsum primis in faucibus. Donec
+                                            convallis leo.
+                                        </List.Item>
+                                    </List>
+                                </Segment>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
                 </Grid.Column>
-                <Grid.Column width={5}>
-                    <Grid>
-                        <Grid.Row>
-                            <Grid.Column>
+                <Grid.Column mobile={16} tablet={16} computer={5}>
+                    <Segment secondary>
+                        <Grid>
+                            <Grid.Column mobile={16} tablet={7} computer={16}>
                                 <LoadedImage
                                     placeholderSrc={placeholderImageUri}
                                     loading={loading}
                                     bordered
                                 />
                             </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column>
+                            <Grid.Column mobile={16} tablet={9} computer={16}>
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Duis lectus tellus, vestibulum
                                 eget pellentesque et, aliquet vel nisi. In
@@ -135,12 +184,43 @@ export function CharacterSheet({ character, loading }) {
                                 ultricies. Praesent in porttitor tellus. Etiam
                                 at felis pulvinar mauris placerat mattis.
                                 Quisque tempor lacus velit, non.
+                                <Divider hidden />
+                                <Statistic.Group size="tiny" widths={3}>
+                                    <Statistic>
+                                        <Statistic.Value>
+                                            {powerLevel}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            Power
+                                            <br />
+                                            Level
+                                        </Statistic.Label>
+                                    </Statistic>
+                                    <Statistic>
+                                        <Statistic.Value>
+                                            {character?.refresh}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            Refresh
+                                        </Statistic.Label>
+                                    </Statistic>
+                                    <Statistic>
+                                        <Statistic.Value>
+                                            {skillPoints}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            Skill
+                                            <br />
+                                            Points
+                                        </Statistic.Label>
+                                    </Statistic>
+                                </Statistic.Group>
                             </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+                        </Grid>
+                    </Segment>
                 </Grid.Column>
             </Grid>
-        </>
+        </Segment>
     );
 }
 
@@ -228,7 +308,7 @@ function StressTrack({ stressTrack, loading }) {
                         icon={box.checked ? "times circle" : "circle outline"}
                         negative={box.checked}
                         size="small"
-                    />
+                    ></Button>
                 ))}
             </List.Content>
         </List.Item>
