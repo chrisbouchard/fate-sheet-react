@@ -38,11 +38,9 @@ function reducer(state, action) {
 }
 
 export function LoadedImage({
-    alt,
+    image,
     loading = false,
-    placeholderAlt,
-    placeholderSrc,
-    src,
+    placeholder,
     ...imageProps
 }) {
     const [imageState, dispatch] = useReducer(reducer, initialState);
@@ -51,8 +49,8 @@ export function LoadedImage({
     // that the reset happens *before* the <img> element is "painted" and
     // begins loading, to avoid a race condition.
     useLayoutEffect(() => {
-        dispatch({ type: "reset", src });
-    }, [src]);
+        dispatch({ type: "reset", image });
+    }, [image]);
 
     const dimmerActive =
         (loading && !imageState.complete) || imageState.loading;
@@ -62,21 +60,19 @@ export function LoadedImage({
             <Dimmer inverted active={dimmerActive}>
                 <Loader />
             </Dimmer>
-            {imageState.errored ? (
+            {imageState.errored && (
                 <Label color="red" corner="right" icon="warning sign" />
-            ) : null}
-            <img
-                src={src}
-                alt={alt}
+            )}
+            <div
                 style={{ display: imageState.loaded ? "block" : "none" }}
                 onLoad={() => dispatch({ type: "load" })}
                 onError={() => dispatch({ type: "error" })}
-            />
-            <img
-                src={placeholderSrc}
-                alt={placeholderAlt ?? <>Loading&hellip;</>}
-                style={{ display: !imageState.loaded ? "block" : "none" }}
-            />
+            >
+                {image}
+            </div>
+            <div style={{ display: imageState.loaded ? "none" : "block" }}>
+                {placeholder}
+            </div>
         </Image>
     );
 }

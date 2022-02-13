@@ -3,7 +3,7 @@ import { Card, Placeholder } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
 
-import placeholderImageUri from "./placeholder.svg";
+import { ReactComponent as PlaceholderImage } from "./placeholder.svg";
 
 export function WorldCard({ world, loading }) {
     return (
@@ -14,8 +14,8 @@ export function WorldCard({ world, loading }) {
             state={{ world }}
         >
             <LoadedImage
-                src={loading ? undefined : "/world-test.svg"}
-                placeholderSrc={placeholderImageUri}
+                image={loading || <img src="/world-test.svg" />}
+                placeholder={<PlaceholderImage />}
                 loading={loading}
                 bordered
             />

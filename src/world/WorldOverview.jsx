@@ -2,15 +2,15 @@ import { Grid, Header, Placeholder, Segment } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
 
-import placeholderImageUri from "./placeholder.svg";
+import { ReactComponent as PlaceholderImage } from "./placeholder.svg";
 
 export function WorldOverview({ loading, world }) {
     return (
         <Grid as={Segment}>
             <Grid.Column width={4}>
                 <LoadedImage
-                    src={loading ? undefined : "/world-test.svg"}
-                    placeholderSrc={placeholderImageUri}
+                    image={loading || <img src="/world-test.svg" />}
+                    placeholder={<PlaceholderImage />}
                     loading={loading}
                     bordered
                 />

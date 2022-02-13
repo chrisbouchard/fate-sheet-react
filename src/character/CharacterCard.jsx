@@ -3,7 +3,7 @@ import { Card, Placeholder } from "semantic-ui-react";
 
 import { LoadedImage } from "../common/LoadedImage";
 
-import placeholderImageUri from "./placeholder.svg";
+import { ReactComponent as PlaceholderImage } from "./placeholder.svg";
 
 export function CharacterCard({ character, loading, path }) {
     return (
@@ -14,7 +14,7 @@ export function CharacterCard({ character, loading, path }) {
             state={{ character }}
         >
             <LoadedImage
-                placeholderSrc={placeholderImageUri}
+                placeholder={<PlaceholderImage />}
                 loading={loading}
                 bordered
             />
