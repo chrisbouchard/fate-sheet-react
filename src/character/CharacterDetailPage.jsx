@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 
 import { Fetch } from "../api/Fetch";
-import { BreadcrumbItem } from "../breadcrumbs/BreadcrumbItem";
 
 import { CharacterSheet } from "./CharacterSheet";
 

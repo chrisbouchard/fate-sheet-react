@@ -13,7 +13,7 @@ function reducer(state, action) {
         case "reset":
             return {
                 ...state,
-                loading: action.src != null,
+                loading: action.image != null,
                 loaded: false,
                 errored: false,
                 complete: false,

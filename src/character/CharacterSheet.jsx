@@ -14,7 +14,7 @@ import {
 
 import { LoadedImage } from "../common/LoadedImage";
 
-import placeholderImageUri from "./placeholder.svg";
+import { ReactComponent as PlaceholderImage } from "./placeholder.svg";
 
 export function CharacterSheet({ character, loading }) {
     const stressTracks = [
@@ -64,32 +64,31 @@ export function CharacterSheet({ character, loading }) {
                     <Menu secondary stackable>
                         <Menu.Item>
                             <Header as="h1">
-                                {character?.name ??
-                                    (loading ? (
-                                        <>Loading&hellip;</>
-                                    ) : (
-                                        "Unknown Character"
-                                    ))}{" "}
+                                {character?.name ?? (
+                                    loading
+                                        ? <>Loading&hellip;</>
+                                        : <>Unknown Character</>
+                                )}{" "}
                             </Header>
                         </Menu.Item>
                         <Menu.Menu position="right">
-                            {character?.world?.data && (
-                                <Menu.Item>
-                                    <Button
-                                        as={Link}
-                                        basic
-                                        content={
-                                            character.world.data.name ?? (
-                                                <i>Loading&hellip;</i>
-                                            )
-                                        }
-                                        icon="globe"
-                                        labelPosition="left"
-                                        to={`/worlds/${character.world.data.id}`}
-                                        primary
-                                    />
-                                </Menu.Item>
-                            )}
+                            <Menu.Item>
+                                <Button
+                                    as={character.world?.data && Link}
+                                    basic
+                                    content={
+                                        character.world?.data?.name ?? (
+                                            loading
+                                                ? <i>Loading&hellip;</i>
+                                                : <i>Unknown World</i>
+                                        )
+                                    }
+                                    icon="globe"
+                                    labelPosition="left"
+                                    to={`/worlds/${character.world?.data?.id}`}
+                                    primary
+                                />
+                            </Menu.Item>
                         </Menu.Menu>
                     </Menu>
                     <Grid stackable>
@@ -163,7 +162,7 @@ export function CharacterSheet({ character, loading }) {
                         <Grid>
                             <Grid.Column mobile={16} tablet={7} computer={16}>
                                 <LoadedImage
-                                    placeholderSrc={placeholderImageUri}
+                                    placeholder={<PlaceholderImage />}
                                     loading={loading}
                                     bordered
                                 />
@@ -287,8 +286,8 @@ function SkillsSection({ skills, loading }) {
 function StressSection({ stressTracks, loading }) {
     return (
         <List relaxed>
-            {stressTracks.map((stressTrack) => (
-                <StressTrack stressTrack={stressTrack} loading={loading} />
+            {stressTracks.map((stressTrack, i) => (
+                <StressTrack key={i} stressTrack={stressTrack} loading={loading} />
             ))}
         </List>
     );
@@ -298,9 +297,10 @@ function StressTrack({ stressTrack, loading }) {
     return (
         <List.Item>
             <List.Header>{stressTrack.name}</List.Header>
-            <List.Content style={{ "margin-top": "2pt" }}>
-                {stressTrack.boxes.map((box) => (
+            <List.Content style={{ marginTop: "2pt" }}>
+                {stressTrack.boxes.map((box, i) => (
                     <Button
+                        key={i}
                         basic={!box.checked}
                         circular
                         compact

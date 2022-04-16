@@ -14,7 +14,7 @@ export function WorldCard({ world, loading }) {
             state={{ world }}
         >
             <LoadedImage
-                image={loading || <img src="/world-test.svg" />}
+                image={loading || <img src="/world-test.svg" alt="" />}
                 placeholder={<PlaceholderImage />}
                 loading={loading}
                 bordered

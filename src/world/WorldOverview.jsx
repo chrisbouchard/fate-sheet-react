@@ -9,7 +9,7 @@ export function WorldOverview({ loading, world }) {
         <Grid as={Segment}>
             <Grid.Column width={4}>
                 <LoadedImage
-                    image={loading || <img src="/world-test.svg" />}
+                    image={loading || <img src="/world-test.svg" alt="" />}
                     placeholder={<PlaceholderImage />}
                     loading={loading}
                     bordered
