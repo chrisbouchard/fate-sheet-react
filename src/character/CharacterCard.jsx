@@ -1,17 +1,23 @@
 import { Link } from "@reach/router";
 import { Card, Placeholder } from "semantic-ui-react";
 
-export function CharacterCard({ character, loading }) {
+import { LoadedImage } from "../common/LoadedImage";
+
+import { ReactComponent as PlaceholderImage } from "./placeholder.svg";
+
+export function CharacterCard({ character, loading, path }) {
     return (
         <Card
             link
             as={loading ? undefined : Link}
-            to={character?.id}
+            to={loading ? null : path}
             state={{ character }}
         >
-            <Placeholder>
-                <Placeholder.Image square />
-            </Placeholder>
+            <LoadedImage
+                placeholder={<PlaceholderImage />}
+                loading={loading}
+                bordered
+            />
             <Card.Content>
                 {loading ? (
                     <Placeholder>

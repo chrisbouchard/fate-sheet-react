@@ -12,6 +12,17 @@ export function FullMenu() {
                     Fate Sheet App
                 </Menu.Item>
 
+                {isAuthenticated ? (
+                    <>
+                        <Menu.Item as={Link} to="/characters">
+                            Characters
+                        </Menu.Item>
+                        <Menu.Item as={Link} to="/worlds">
+                            Worlds
+                        </Menu.Item>
+                    </>
+                ) : null}
+
                 <Menu.Menu position="right">
                     {isAuthenticated ? (
                         <Dropdown

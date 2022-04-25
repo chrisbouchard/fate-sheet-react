@@ -24,7 +24,7 @@ export function ApiProvider({ children }) {
 
         api.interceptors.request.use(async (config) => {
             const token = await getAccessTokenSilently();
-            config.headers.Authorization = `bearer ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
             return config;
         });
 
