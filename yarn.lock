@@ -8141,13 +8141,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-deep-equal@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "fast-deep-equal@npm:2.0.1"
-  checksum: b701835a87985e0ec4925bdf1f0c1e7eb56309b5d12d534d5b4b69d95a54d65bb16861c081781ead55f73f12d6c60ba668713391ee7fbf6b0567026f579b7b0b
-  languageName: node
-  linkType: hard
-
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8243,7 +8236,6 @@ __metadata:
     prettier: ^2.5.1
     react: ^18.1.0
     react-dom: ^18.1.0
-    react-promise-suspense: ^0.3.3
     react-refresh: ^0.11.0
     react-scripts: ^5.0.0
     semantic-ui-css: "git+https://github.com/Semantic-Org/Semantic-UI-CSS.git"
@@ -13528,15 +13520,6 @@ __metadata:
     "@popperjs/core": ^2.0.0
     react: ^16.8.0 || ^17
   checksum: 915fcf08e1da4fd48a200074fcdd936f601ee2173f1e730cfed8a54fd47716aa8bf9cce2392463e3bcbe64a096d0baf463809ed2874b94d3a9d430ae6d817b5d
-  languageName: node
-  linkType: hard
-
-"react-promise-suspense@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "react-promise-suspense@npm:0.3.3"
-  dependencies:
-    fast-deep-equal: ^2.0.1
-  checksum: 38775b4eb1e8e2c5ae8a58991aef34f38c487856018cfdf02f7537513392ed5e1ad93ec8f82abacd82aa918a38d39a6c5481f22b918f8a01457ab67e596c3fb3
   languageName: node
   linkType: hard
 

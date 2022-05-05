@@ -62,7 +62,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.1.0"],
             ["react-dom", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:18.1.0"],
-            ["react-promise-suspense", "npm:0.3.3"],
             ["react-refresh", "npm:0.11.0"],
             ["react-scripts", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:5.0.0"],
             ["semantic-ui-css", "https://github.com/Semantic-Org/Semantic-UI-CSS.git#commit=01e4a5346496c284db3b19a102458731ccccd911"],
@@ -11816,13 +11815,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["fast-deep-equal", [
-        ["npm:2.0.1", {
-          "packageLocation": "./.yarn/cache/fast-deep-equal-npm-2.0.1-9c01e08a62-b701835a87.zip/node_modules/fast-deep-equal/",
-          "packageDependencies": [
-            ["fast-deep-equal", "npm:2.0.1"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:3.1.3", {
           "packageLocation": "./.yarn/cache/fast-deep-equal-npm-3.1.3-790edcfcf5-e21a9d8d84.zip/node_modules/fast-deep-equal/",
           "packageDependencies": [
@@ -11927,7 +11919,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.1.0"],
             ["react-dom", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:18.1.0"],
-            ["react-promise-suspense", "npm:0.3.3"],
             ["react-refresh", "npm:0.11.0"],
             ["react-scripts", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:5.0.0"],
             ["semantic-ui-css", "https://github.com/Semantic-Org/Semantic-UI-CSS.git#commit=01e4a5346496c284db3b19a102458731ccccd911"],
@@ -18619,16 +18610,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/popperjs__core",
             "@types/react",
             "react"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["react-promise-suspense", [
-        ["npm:0.3.3", {
-          "packageLocation": "./.yarn/cache/react-promise-suspense-npm-0.3.3-a0a8350ef4-38775b4eb1.zip/node_modules/react-promise-suspense/",
-          "packageDependencies": [
-            ["react-promise-suspense", "npm:0.3.3"],
-            ["fast-deep-equal", "npm:2.0.1"]
           ],
           "linkType": "HARD",
         }]
