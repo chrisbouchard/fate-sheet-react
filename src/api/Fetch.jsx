@@ -1,14 +1,10 @@
-import usePromise from "react-promise-suspense";
+import useSWR from "swr";
 
 import { useApi } from "../api/Api";
 
 export function Fetch({ resource, params = {}, children }) {
-    const api = useApi();
+    const { apiFetch } = useApi();
+    const { data } = useSWR([resource, { params }], apiFetch, { suspense: true });
 
-    const response = usePromise(
-        () => api.fetch(resource, { params }),
-        [api, resource, params]
-    );
-
-    return children(response);
+    return children(data);
 }

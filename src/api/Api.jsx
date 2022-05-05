@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import Kitsu from "kitsu";
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useCallback, useContext, useMemo } from "react";
 
 const baseURL = process.env.REACT_APP_API_BASE_URL;
 const debugDelay = process.env.REACT_APP_API_DEBUG_DELAY_MS;
@@ -35,5 +35,12 @@ export function ApiProvider({ children }) {
 }
 
 export function useApi() {
-    return useContext(ApiContext);
+    const api = useContext(ApiContext);
+
+    const apiFetch = useCallback(
+        (...args) => api.fetch(...args),
+        [api],
+    );
+
+    return { api, apiFetch };
 }
