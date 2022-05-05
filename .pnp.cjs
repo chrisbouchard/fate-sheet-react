@@ -67,6 +67,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:5.0.0"],
             ["semantic-ui-css", "https://github.com/Semantic-Org/Semantic-UI-CSS.git#commit=01e4a5346496c284db3b19a102458731ccccd911"],
             ["semantic-ui-react", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:2.1.1"],
+            ["swr", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:1.3.0"],
             ["typescript", "patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -11931,6 +11932,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:5.0.0"],
             ["semantic-ui-css", "https://github.com/Semantic-Org/Semantic-UI-CSS.git#commit=01e4a5346496c284db3b19a102458731ccccd911"],
             ["semantic-ui-react", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:2.1.1"],
+            ["swr", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:1.3.0"],
             ["typescript", "patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -20459,6 +20461,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["csso", "npm:4.2.0"],
             ["picocolors", "npm:1.0.0"],
             ["stable", "npm:0.1.8"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["swr", [
+        ["npm:1.3.0", {
+          "packageLocation": "./.yarn/cache/swr-npm-1.3.0-3a8f9fadf5-e7a184f0d5.zip/node_modules/swr/",
+          "packageDependencies": [
+            ["swr", "npm:1.3.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:1.3.0", {
+          "packageLocation": "./.yarn/__virtual__/swr-virtual-d244851935/0/cache/swr-npm-1.3.0-3a8f9fadf5-e7a184f0d5.zip/node_modules/swr/",
+          "packageDependencies": [
+            ["swr", "virtual:89f2587cb7a78a9f657302a50000a248a4d05e8af2980b6c25e8e1a2cd26c6446f2f08c31f0508a2980a2f4cf2172c29ee072b4d2338cbd5c3811a62da0ed434#npm:1.3.0"],
+            ["@types/react", null],
+            ["react", "npm:18.1.0"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]
